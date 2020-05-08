@@ -9,6 +9,7 @@ const {
     shuffle,
     rollDice,
     getCardsValue,
+    italianNames,
 } = require("./utilities")
 
 let game = initializeGame()
@@ -320,6 +321,8 @@ io.on("connection", function (socket) {
         game.attackTo = to
         io.emit("attackFrom", from)
         io.emit("attackTo", to)
+        io.emit("attackFromText", italianNames[from])
+        io.emit("attackToText", italianNames[to])
         io.emit("attacker", game.map[from].owner)
         io.emit("defender", game.map[to].owner)
 

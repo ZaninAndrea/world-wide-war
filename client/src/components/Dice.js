@@ -36,7 +36,7 @@ export default class Dice extends React.Component {
     render() {
         const { props } = this
         const fill = this.state.lost
-            ? "#000"
+            ? "#dedede"
             : props.side === "attack"
             ? "#ed333b"
             : "#3584e4"

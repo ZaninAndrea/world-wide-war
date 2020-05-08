@@ -50,6 +50,8 @@ class App extends React.Component {
             cards: [],
             tanksRemaining: null,
             objective: "",
+            attackFromText: null,
+            attackToText: null,
         }
 
         socket.on("new player", (player) => {
@@ -60,6 +62,10 @@ class App extends React.Component {
         socket.on("your objective", (value) =>
             this.setState({ objective: value })
         )
+        socket.on("attackFromText", (val) =>
+            this.setState({ attackFromText: val })
+        )
+        socket.on("attackToText", (val) => this.setState({ attackToText: val }))
         socket.on("game phase", (phase, param1, param2) => {
             if (phase === "ATTACK ROLLS") {
                 this.setState({ phase, page: 1 })
@@ -352,6 +358,16 @@ class App extends React.Component {
                             }
                         })
                     }}
+                    attackFromText={this.state.attackFromText}
+                    attackToText={this.state.attackToText}
+                    attackColor={
+                        this.state.attackFrom &&
+                        this.state.map[this.state.attackFrom].color
+                    }
+                    defenseColor={
+                        this.state.attackTo &&
+                        this.state.map[this.state.attackTo].color
+                    }
                     updateDefenseDice={(idx, newN) => {
                         socket.emit("rolled defense dice", idx, newN)
                         this.setState(({ defenseDices }) => {

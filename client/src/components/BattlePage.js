@@ -155,6 +155,54 @@ export default function BattlePage(props) {
                     strokeDashoffset={0}
                 />
             </g>
+            <foreignObject x={0} y={20} width="88px" height="25px">
+                <div
+                    style={{
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <p
+                        style={{
+                            margin: "0",
+                            padding: "0",
+                            textAlign: "center",
+                            fontFamily: "'Arial Heavy'",
+                            fontWeight: "900",
+                            fontSize: "9px",
+                            color: props.attackColor,
+                        }}
+                    >
+                        {props.attackFromText || ""}
+                    </p>
+                </div>
+            </foreignObject>
+            <foreignObject x={100} y={20} width="88px" height="25px">
+                <div
+                    style={{
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                    }}
+                >
+                    <p
+                        style={{
+                            margin: "0",
+                            padding: "0",
+                            textAlign: "center",
+                            fontFamily: "'Arial Heavy'",
+                            fontWeight: "900",
+                            fontSize: "9px",
+                            color: props.defenseColor,
+                        }}
+                    >
+                        {props.attackToText || ""}
+                    </p>
+                </div>
+            </foreignObject>
         </svg>
     )
 }
