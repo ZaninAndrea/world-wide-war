@@ -174,27 +174,25 @@ class App extends React.Component {
                         placements: newPlacements,
                     }
                 })
-            } else if (
-                this.state.phase === "TURN TANKS" &&
-                this.state.myTurn &&
-                Object.values(this.state.placements).reduce(
-                    (a, b) => a + b,
-                    0
-                ) < this.state.tanksRemaining
-            ) {
-                this.setState(({ placements }) => {
-                    const newPlacements = {
-                        ...placements,
-                        [country]: placements[country]
-                            ? placements[country] + 1
-                            : 1,
-                    }
-
-                    return {
-                        placements: newPlacements,
-                    }
-                })
             }
+        } else if (
+            this.state.phase === "TURN TANKS" &&
+            this.state.myTurn &&
+            Object.values(this.state.placements).reduce((a, b) => a + b, 0) <
+                this.state.tanksRemaining
+        ) {
+            this.setState(({ placements }) => {
+                const newPlacements = {
+                    ...placements,
+                    [country]: placements[country]
+                        ? placements[country] + 1
+                        : 1,
+                }
+
+                return {
+                    placements: newPlacements,
+                }
+            })
         }
     }
 
@@ -238,7 +236,8 @@ class App extends React.Component {
         )
         let nextActive =
             (this.state.phase === "ATTACK" ||
-                this.state.phase === "TURN ENDING") &&
+                this.state.phase === "TURN ENDING" ||
+                this.state.phase === "CLICK NEXT") &&
             this.state.myTurn
 
         let okActive =
@@ -264,7 +263,8 @@ class App extends React.Component {
         let nextClick = () => {
             if (
                 this.state.phase === "ATTACK" ||
-                this.state.phase === "TURN ENDING"
+                this.state.phase === "TURN ENDING" ||
+                this.state.phase === "CLICK NEXT"
             )
                 socket.emit("end turn")
         }
