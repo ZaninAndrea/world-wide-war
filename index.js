@@ -692,6 +692,29 @@ io.on("connection", function (socket) {
                 })
             }
         } else {
+            socket.emit("attackFrom", game.attackFrom)
+            socket.emit("attackTo", game.attackTo)
+            socket.emit(
+                "attackFromText",
+                game.attackFrom && italianNames[game.attackFrom]
+            )
+            socket.emit(
+                "attackToText",
+                game.attackTo && italianNames[game.attackTo]
+            )
+            socket.emit(
+                "attacker",
+                game.attackFrom && game.map[game.attackFrom].owner
+            )
+            socket.emit(
+                "defender",
+                game.attackTo && game.map[game.attackTo].owner
+            )
+            socket.emit("tanks remaining", game.tanksRemaining)
+
+            io.emit("attack dices", game.attackDices)
+            io.emit("defense dices", game.defenseDices)
+
             for (let country of Object.keys(game.map)) {
                 socket.emit("map update", country, {
                     owner: game.map[country].owner,
