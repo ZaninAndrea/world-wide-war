@@ -233,12 +233,12 @@ export default class MainPage extends React.Component {
                     okActive={props.okActive}
                     onOkClick={props.onOkClick}
                     showGetCard={
-                        props.phase !== "LOBBY" && props.phase !== "RECONNECT"
-                    }
-                    showMyCards={
                         props.phase !== "LOBBY" &&
                         props.phase !== "RECONNECT" &&
                         props.phase !== "SETUP"
+                    }
+                    showMyCards={
+                        props.phase !== "LOBBY" && props.phase !== "RECONNECT"
                     }
                     showNext={
                         (props.phase === "ATTACK" ||
