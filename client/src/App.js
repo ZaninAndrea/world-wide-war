@@ -8,11 +8,16 @@ import CardsPage from "./components/CardsPage"
 
 let socket
 
-if (window.location.hostname === "localhost")
+if (window.location.hostname === "localhost") {
     socket = window.io("localhost:5000")
-else socket = window.io()
-
-setInterval(() => fetch("http://localhost:5000/keepalive"), 60000)
+    setInterval(() => fetch("http://localhost:5000/keepalive"), 60000)
+} else {
+    socket = window.io()
+    setInterval(
+        () => fetch("https://worldwidewar.herokuapp.com/keepalive"),
+        60000
+    )
+}
 
 class App extends React.Component {
     constructor(props) {
@@ -140,6 +145,7 @@ class App extends React.Component {
                 players: newPlayers,
             }))
         })
+        socket.on("disconnect", () => alert("You disconnected"))
     }
 
     getPlayer = (id) => {

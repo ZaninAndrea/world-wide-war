@@ -30,8 +30,10 @@ export default class CardsPage extends React.Component {
                     .join("-")
 
                 if (allowedTypes.indexOf(types) !== -1) {
-                    this.props.playCards(newSelectedCards)
-                    setTimeout(() => this.setState({ selectedCards: [] }), 300)
+                    setTimeout(() => {
+                        this.setState({ selectedCards: [] })
+                        this.props.playCards(newSelectedCards)
+                    }, 300)
                 }
             }
             this.setState({

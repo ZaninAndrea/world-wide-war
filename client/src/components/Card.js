@@ -138,7 +138,7 @@ export default class Card extends React.Component {
 
         let icon
 
-        if (this.props.type === "soldato") {
+        if (this.props.type === "fante") {
             icon = (
                 <g transform="translate(-63.192 -58.991)">
                     <path

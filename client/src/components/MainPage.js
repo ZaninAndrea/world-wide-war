@@ -243,7 +243,7 @@ export default class MainPage extends React.Component {
                     showNext={
                         (props.phase === "ATTACK" ||
                             props.phase === "TURN ENDING" ||
-                            this.state.phase === "CLICK NEXT") &&
+                            props.phase === "CLICK NEXT") &&
                         props.myTurn
                     }
                     showPlay={props.phase === "LOBBY"}

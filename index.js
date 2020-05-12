@@ -770,7 +770,7 @@ io.on("connection", function (socket) {
                 socket.emit("notification", "Unknown territory")
                 return
             }
-            if (player.startingCountries.indexOf(country) === -1) {
+            if (game.map[country].owner !== player.id) {
                 socket.emit("notification", "This territory is not yours")
                 return
             }
