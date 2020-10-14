@@ -14,7 +14,7 @@ if (window.location.hostname === "localhost") {
 } else {
     socket = window.io()
     setInterval(
-        () => fetch("https://worldwidewar.herokuapp.com/keepalive"),
+        () => fetch("https://world-wide-war.caprover.baida.dev/keepalive"),
         60000
     )
 }
